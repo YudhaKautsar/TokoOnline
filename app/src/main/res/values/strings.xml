@@ -5,4 +5,5 @@
     <string name="lbl_login">Login</string>
     <string name="lbl_home">Home</string>
     <string name="lbl_username_password_salah">Username atau Password salah</string>
+    <string name="lbl_price">$ %1$s</string>
 </resources>

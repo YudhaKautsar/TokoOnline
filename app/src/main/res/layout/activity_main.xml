@@ -24,17 +24,13 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <com.yudha.tokoonline.widget.GridViewMenu
+    <com.yudha.tokoonline.util.GridViewMenu
         android:id="@+id/recyclerViewProducts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:numColumns="auto_fit"
         android:focusable="false"
-        android:layout_marginHorizontal="@dimen/space_x2"
-        android:nestedScrollingEnabled="false"
-        android:layout_marginTop="@dimen/space_x2"
-        android:verticalSpacing="@dimen/space_x2"
-        android:horizontalSpacing="@dimen/space_x2"
+        android:layout_marginTop="@dimen/space"
         tools:listitem="@layout/item_istationary_category_list" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -22,13 +22,14 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/card_photo"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginEnd="@dimen/space"
             app:cardBackgroundColor="@color/transparent"
             app:cardElevation="@dimen/zero"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/request_list"

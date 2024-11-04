@@ -1,6 +1,8 @@
-package com.yudha.tokoonline.repository
+package com.yudha.tokoonline.module
 
 import com.yudha.tokoonline.api.ApiService
+import com.yudha.tokoonline.repository.UserRepository
+import com.yudha.tokoonline.repository.UserRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

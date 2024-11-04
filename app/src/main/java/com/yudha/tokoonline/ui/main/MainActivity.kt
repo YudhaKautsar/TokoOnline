@@ -2,16 +2,19 @@ package com.yudha.tokoonline.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.yudha.tokoonline.R
 import com.yudha.tokoonline.base.BaseActivity
 import com.yudha.tokoonline.databinding.ActivityMainBinding
 import com.yudha.tokoonline.databinding.LayoutFragmentToolbarBinding
 import com.yudha.tokoonline.ui.login.LoginActivity
+import com.yudha.tokoonline.ui.main.adapter.ProductAdapter
 import com.yudha.tokoonline.util.gone
 import com.yudha.tokoonline.util.visible
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -21,8 +24,14 @@ class MainActivity : BaseActivity() {
     private lateinit var toolbarBinding: LayoutFragmentToolbarBinding
     private val mainViewModel: MainViewModel by viewModels()
 
+    @Inject
+    lateinit var productAdapter: ProductAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+
         if (!isUserLoggedIn()) {
             redirectToLogin()
         } else {
@@ -41,11 +50,35 @@ class MainActivity : BaseActivity() {
                 }
 
             }
+            setupRecyclerView()
+            setupObservers()
             // Observe the loading state from MainViewModel
             observeLoadingState(mainViewModel)
 
             // Fetch products or other actions that might trigger loading
-            mainViewModel.fetchProducts()
+            mainViewModel.fetchProducts(10)
+        }
+    }
+
+    private fun setupRecyclerView() {
+        binding.recyclerViewProducts.setCustomAdapter(productAdapter)
+    }
+
+    private fun setupObservers() {
+        // Observe the products LiveData
+        mainViewModel.products.observe(this) { productList ->
+            // Update the adapter with the new data
+            productAdapter.submitList(productList)
+        }
+
+        // Optionally observe loading and error states if needed
+        mainViewModel.loading.observe(this) { isLoading ->
+            observeLoadingState(mainViewModel)
+        }
+
+        mainViewModel.error.observe(this) { errorMessage ->
+            // Show error message, e.g., in a Toast
+            Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
         }
     }
 

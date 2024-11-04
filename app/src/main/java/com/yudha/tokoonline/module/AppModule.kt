@@ -1,4 +1,4 @@
-package com.yudha.tokoonline.di
+package com.yudha.tokoonline.module
 
 import android.content.Context
 import com.yudha.tokoonline.result.token.TokenManager

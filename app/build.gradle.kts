@@ -79,6 +79,10 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
     implementation("com.airbnb.android:lottie:${findProperty("lottieVersion") ?: "5.0.3"}")
 
+
+    implementation("com.github.bumptech.glide:glide:4.11.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.11.0")
+
 }
 
 // Allow references to generated code

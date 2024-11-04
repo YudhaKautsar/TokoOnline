@@ -1,4 +1,4 @@
-package com.yudha.tokoonline.network
+package com.yudha.tokoonline.module
 
 import com.yudha.tokoonline.api.ApiService
 import dagger.Module
