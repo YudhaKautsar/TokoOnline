@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+                <include
+                    layout="@layout/layout_fragment_toolbar"
+                    android:layout_marginTop="@dimen/minus_five"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <View
+                    android:id="@+id/view_line_toolbar_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line"
+                    android:background="@color/gainsboro" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.yudha.tokoonline.widget.GridViewMenu
+        android:id="@+id/recyclerViewProducts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="auto_fit"
+        android:focusable="false"
+        android:layout_marginHorizontal="@dimen/space_x2"
+        android:nestedScrollingEnabled="false"
+        android:layout_marginTop="@dimen/space_x2"
+        android:verticalSpacing="@dimen/space_x2"
+        android:horizontalSpacing="@dimen/space_x2"
+        tools:listitem="@layout/item_istationary_category_list" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

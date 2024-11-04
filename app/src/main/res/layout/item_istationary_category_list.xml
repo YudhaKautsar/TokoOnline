@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_all"
+    android:layout_width="156dp"
+    android:layout_height="151dp"
+    android:gravity="center"
+    android:clipToPadding="false"
+    app:cardCornerRadius="@dimen/space"
+    android:backgroundTint="@color/blue_0"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="156dp"
+        android:layout_height="151dp"
+        android:paddingTop="@dimen/space_third"
+        android:paddingBottom="@dimen/space_third"
+        android:paddingEnd="@dimen/space_third"
+        android:paddingStart="@dimen/space_third">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/card_photo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="@dimen/space"
+            app:cardBackgroundColor="@color/transparent"
+            app:cardElevation="@dimen/zero"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/request_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_photo">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lbl_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/space_x2"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textAppearance="@style/TextAppearance.App.TextInputLayout.OpenSans.Bold"
+                    android:textColor="@color/saintpatrickblue"
+                    android:textSize="@dimen/text_12"
+                    tools:text="Alat Tulis dan Tulis Ulang" />
+            </RelativeLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/lbl_lihat_lainnya"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/space_half_quarter"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.App.TextInputLayout.OpenSans.Medium"
+                android:textColor="@color/primary_blue"
+                android:textSize="@dimen/text_10" />
+
+            <ImageView
+                android:layout_width="@dimen/space"
+                android:layout_height="@dimen/space"
+                android:layout_alignTop="@+id/lbl_lihat_lainnya"
+                android:layout_alignBottom="@+id/lbl_lihat_lainnya"
+                android:layout_toEndOf="@+id/lbl_lihat_lainnya"
+                />
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
