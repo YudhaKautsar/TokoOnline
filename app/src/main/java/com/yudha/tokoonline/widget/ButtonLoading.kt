@@ -74,6 +74,66 @@ class ButtonLoading @JvmOverloads constructor(
                         PorterDuff.Mode.SRC_IN
                     )
                 }
+                4 -> {
+                    binding.layoutMain.setBackgroundResource(R.drawable.bg_button_oval_kelly_green)
+                    binding.txtLabel.setTextColor(
+                        ContextCompat.getColor(
+                            context,
+                            R.color.white
+                        )
+                    )
+                    binding.pbLoading.indeterminateDrawable.setColorFilter(
+                        ContextCompat.getColor(context, R.color.white),
+                        PorterDuff.Mode.SRC_IN
+                    )
+                }
+                5 -> {
+                    binding.layoutMain.setBackgroundResource(R.drawable.bg_button_oval_lavender)
+                    binding.txtLabel.setTextColor(
+                        ContextCompat.getColor(
+                            context,
+                            R.color.white
+                        )
+                    )
+                    binding.pbLoading.indeterminateDrawable.setColorFilter(
+                        ContextCompat.getColor(context, R.color.white),
+                        PorterDuff.Mode.SRC_IN
+                    )
+                }
+                6 -> {
+                    binding.layoutMain.setBackgroundResource(R.drawable.bg_button_oval_full_blue)
+//                    binding.txtLabel.textSize = 12f
+                    binding.txtLabel.setTextColor(
+
+                        ContextCompat.getColor(
+                            context,
+                            R.color.white
+                        )
+                    )
+                    binding.pbLoading.indeterminateDrawable.setColorFilter(
+                        ContextCompat.getColor(context, R.color.white),
+                        PorterDuff.Mode.SRC_IN
+                    )
+                }
+                7 -> {
+                    binding.layoutMain.setBackgroundResource(R.drawable.bg_button_oval_pastel_green)
+                    binding.txtLabel.setTextColor(ContextCompat.getColor(context, R.color.white))
+//                    binding.txtLabel.textSize = 12f
+                    binding.pbLoading.indeterminateDrawable.setColorFilter(
+                        ContextCompat.getColor(context, R.color.white),
+                        PorterDuff.Mode.SRC_IN
+                    )
+                }
+                8 -> {
+                    binding.layoutMain.setBackgroundResource(R.drawable.bg_button_oval_pastel_yellow)
+                    binding.layoutMain.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.yellow_500))
+                    binding.txtLabel.setTextColor(resources.getColorStateList(R.color.white))
+//                    binding.txtLabel.textSize = 12f
+                    binding.pbLoading.indeterminateDrawable.setColorFilter(
+                        ContextCompat.getColor(context, R.color.white),
+                        PorterDuff.Mode.SRC_IN
+                    )
+                }
                 // Add other styles as needed...
                 else -> {
                     binding.layoutMain.setBackgroundResource(R.drawable.bg_button_oval_full_netral)

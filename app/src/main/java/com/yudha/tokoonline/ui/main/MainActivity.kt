@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yudha.tokoonline.R
 import com.yudha.tokoonline.base.BaseActivity
@@ -61,7 +62,10 @@ class MainActivity : BaseActivity() {
     }
 
     private fun setupRecyclerView() {
-        binding.recyclerViewProducts.setCustomAdapter(productAdapter)
+        val gridManager = GridLayoutManager(this, 2)
+        gridManager.orientation = LinearLayoutManager.VERTICAL
+        binding.recyclerViewProducts.layoutManager = GridLayoutManager(this, 2)
+        binding.recyclerViewProducts.adapter = productAdapter
     }
 
     private fun setupObservers() {
