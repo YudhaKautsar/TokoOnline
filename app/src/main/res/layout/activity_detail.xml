@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include
+            layout="@layout/layout_fragment_toolbar"
+            android:layout_marginTop="@dimen/minus_five"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:id="@+id/view_line_toolbar_top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line"
+            android:background="@color/gainsboro" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/layoutKeranjang"
+                android:layout_marginBottom="@dimen/space_x6"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/fotoBarang"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        tools:src="@color/colorPrimary" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/hargaBarang"
+                        style="@style/TextAppearance.App.TextInputLayout.TTCommons.Bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/space_x2"
+                        android:layout_marginTop="@dimen/space_x2"
+                        android:gravity="end"
+                        android:textColor="@color/primary_blue"
+                        android:textSize="@dimen/text_24"
+                        tools:text="$ 82905252076209.5" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/namaBarang"
+                        style="@style/TextAppearance.App.TextInputLayout.TTCommons.DemiBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/space_x2"
+                        android:layout_marginTop="@dimen/space_x2"
+                        android:textSize="@dimen/text_20"
+                        tools:text="Baju OlahragagnagnJGNJSGNKngANBGJKJGBASNGSGSGSGSGSKJDGBKSG" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/categoryBarang"
+                        style="@style/TextAppearance.App.TextInputLayout.TTCommons.Regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/space_x2"
+                        android:layout_marginTop="@dimen/space"
+                        android:textSize="@dimen/text_16"
+                        tools:text="Pakaian" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/descBarang"
+                        style="@style/TextAppearance.App.TextInputLayout.TTCommons.Regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/space_x2"
+                        android:layout_marginTop="@dimen/space_x2"
+                        android:layout_marginBottom="@dimen/space_x2"
+                        android:textSize="@dimen/text_16"
+                        tools:text="@string/lbl_lorem_ipsum" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.core.widget.NestedScrollView>
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/layoutKeranjang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:background="@color/primary_blue"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/space"
+                    android:src="@drawable/ic_cart"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

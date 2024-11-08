@@ -79,7 +79,7 @@
                 android:maxLines="1"
                 android:textAppearance="@style/TextAppearance.App.TextInputLayout.OpenSans.Medium"
                 android:textColor="@color/primary_blue"
-                android:textSize="@dimen/text_10" />
+                android:textSize="@dimen/text_14" />
 
             <ImageView
                 android:layout_width="@dimen/space"

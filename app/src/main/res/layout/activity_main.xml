@@ -34,8 +34,9 @@
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="2"
+        tools:itemCount="20"
         android:focusable="false"
-        android:layout_marginTop="@dimen/space"
+        android:paddingTop="@dimen/space_x2"
         tools:listitem="@layout/item_istationary_category_list" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

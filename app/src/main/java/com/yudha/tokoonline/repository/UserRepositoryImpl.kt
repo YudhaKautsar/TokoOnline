@@ -15,8 +15,12 @@ class UserRepositoryImpl @Inject constructor(private val apiService: ApiService)
         return apiService.loginUser(loginRequest)
     }
 
-    override suspend fun fetchProducts(limit: Int): Response<List<ProductResponse>> {
-        return apiService.getProducts(limit)
+    override suspend fun fetchProducts(): Response<List<ProductResponse>> {
+        return apiService.getProducts()
+    }
+
+    override suspend fun getProductDetail(id: String?): Response<ProductResponse> {
+        return apiService.getProductDetail(id)
     }
 
 }

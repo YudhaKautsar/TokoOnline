@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yudha.tokoonline.R
 import com.yudha.tokoonline.base.BaseActivity
+import com.yudha.tokoonline.base.Constant
 import com.yudha.tokoonline.databinding.ActivityMainBinding
 import com.yudha.tokoonline.databinding.LayoutFragmentToolbarBinding
+import com.yudha.tokoonline.ui.detail.DetailActivity
 import com.yudha.tokoonline.ui.login.LoginActivity
 import com.yudha.tokoonline.ui.main.adapter.ProductAdapter
 import com.yudha.tokoonline.util.gone
@@ -57,7 +59,7 @@ class MainActivity : BaseActivity() {
             observeLoadingState(mainViewModel)
 
             // Fetch products or other actions that might trigger loading
-            mainViewModel.fetchProducts(10)
+            mainViewModel.fetchProducts()
         }
     }
 
@@ -69,14 +71,21 @@ class MainActivity : BaseActivity() {
     }
 
     private fun setupObservers() {
-        // Observe the products LiveData
         mainViewModel.products.observe(this) { productList ->
-            // Update the adapter with the new data
+
             productAdapter.submitList(productList)
+            productAdapter.setOnItemClickListener { product ->
+                startActivity(
+                    DetailActivity.getIntent(
+                        context = this,
+                        id = product.id.toString()
+                    )
+                )
+            }
         }
 
         // Optionally observe loading and error states if needed
-        mainViewModel.loading.observe(this) { isLoading ->
+        mainViewModel.loading.observe(this) {
             observeLoadingState(mainViewModel)
         }
 

@@ -10,7 +10,13 @@ import com.yudha.tokoonline.R
 import com.yudha.tokoonline.api.model.response.ProductResponse
 import com.yudha.tokoonline.databinding.ItemIstationaryCategoryListBinding
 
-class ProductAdapter : ListAdapter<ProductResponse, ProductAdapter.ProductViewHolder>(ProductDiffCallback()) {
+class ProductAdapter: ListAdapter<ProductResponse, ProductAdapter.ProductViewHolder>(ProductDiffCallback()) {
+
+    private var onItemClick: ((ProductResponse) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (ProductResponse) -> Unit) {
+        onItemClick = listener
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val binding = ItemIstationaryCategoryListBinding.inflate(
@@ -23,7 +29,8 @@ class ProductAdapter : ListAdapter<ProductResponse, ProductAdapter.ProductViewHo
         holder.bind(getItem(position))
     }
 
-    class ProductViewHolder(private val binding: ItemIstationaryCategoryListBinding) : RecyclerView.ViewHolder(binding.root) {
+    // Change to inner class so it can access outer class' members (like onItemClick)
+    inner class ProductViewHolder(private val binding: ItemIstationaryCategoryListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(product: ProductResponse) {
             // Bind product title
             binding.lblName.text = product.title
@@ -35,6 +42,10 @@ class ProductAdapter : ListAdapter<ProductResponse, ProductAdapter.ProductViewHo
             Glide.with(binding.cardPhoto.context)
                 .load(product.image)
                 .into(binding.cardPhoto)
+
+            binding.root.setOnClickListener {
+                onItemClick?.invoke(product) // Correctly invoke the listener
+            }
         }
     }
 

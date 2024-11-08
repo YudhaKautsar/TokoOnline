@@ -1,31 +1,30 @@
-package com.yudha.tokoonline.ui.main
+package com.yudha.tokoonline.ui.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.yudha.tokoonline.api.ApiService
 import com.yudha.tokoonline.api.model.response.ProductResponse
 import com.yudha.tokoonline.base.BaseViewModel
 import com.yudha.tokoonline.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
-@HiltViewModel
-class MainViewModel @Inject constructor(
-    private val userRepository: UserRepository
-) : BaseViewModel() {
 
-    private val _products = MutableLiveData<List<ProductResponse>>()
-    val products: LiveData<List<ProductResponse>> get() = _products
+@HiltViewModel
+class DetailViewModel @Inject constructor(
+    private val userRepository: UserRepository,
+): BaseViewModel() {
+
+    private val _productDetail = MutableLiveData<ProductResponse>()
+    val productDetail: LiveData<ProductResponse> get() = _productDetail
     private val _errorMessage = MutableLiveData<String>()
 
-    fun fetchProducts() {
-        safeApiCall { userRepository.fetchProducts() }
+    fun getProductDetail(id: String) {
+        safeApiCall { userRepository.getProductDetail(id) }
     }
 
     override fun <T> handleSuccess(data: T?) {
-        if (data is List<*>) {
-            _products.value =
-                data.filterIsInstance<ProductResponse>()
+        if (data is ProductResponse) {
+            _productDetail.value = data
         }
     }
 

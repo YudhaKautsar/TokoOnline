@@ -5,7 +5,7 @@
     android:id="@+id/appBar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@color/primary_blue"
     app:elevation="0dp">
 
     <androidx.appcompat.widget.Toolbar
@@ -53,7 +53,7 @@
                         android:layout_toEndOf="@+id/img_back"
                         android:text="Input"
                         android:textAppearance="@style/TextAppearance.App.TextInputLayout.TTCommons.Bold"
-                        android:textColor="@color/black_500"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/space_x3"
                         android:visibility="visible" />
 
