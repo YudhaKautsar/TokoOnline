@@ -44,15 +44,27 @@ class ButtonLoading @JvmOverloads constructor(
                 binding.txtLabel.visibility = View.GONE
                 binding.txtSubLabel.visibility = View.GONE
                 binding.pbLoading.visibility = View.VISIBLE
+                binding.icKeranjang.visibility = View.GONE
                 binding.layoutMain.isClickable = false
             } else {
                 binding.txtLabel.visibility = View.VISIBLE
                 binding.txtSubLabel.visibility = View.VISIBLE
                 binding.pbLoading.visibility = View.GONE
+
+                binding.icKeranjang.visibility = if (icKeranjang) View.VISIBLE else View.GONE
                 binding.layoutMain.isClickable = true
             }
         }
 
+    var icKeranjang: Boolean
+        get() = binding.icKeranjang.visibility == View.VISIBLE
+        set(value) {
+            if (value) {
+                binding.icKeranjang.visibility = View.VISIBLE
+            } else {
+                binding.icKeranjang.visibility = View.GONE
+            }
+        }
     var style: Int = 1
         set(value) {
             when (value) {
@@ -178,6 +190,7 @@ class ButtonLoading @JvmOverloads constructor(
             subText = ""
             isClickAble = ta.getBoolean(R.styleable.ButtonLoading_isClickAble, true)
             style = ta.getInt(R.styleable.ButtonLoading_ietStyle, 1)
+            icKeranjang = ta.getBoolean(R.styleable.ButtonLoading_icKeranjang, false)
 
             binding.layoutMain.setOnClickListener {
                 if (isClickAble)
