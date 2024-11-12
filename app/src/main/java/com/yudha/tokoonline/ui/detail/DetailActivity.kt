@@ -10,6 +10,7 @@ import com.yudha.tokoonline.base.BaseActivity
 import com.yudha.tokoonline.base.Constant
 import com.yudha.tokoonline.databinding.ActivityDetailBinding
 import com.yudha.tokoonline.databinding.LayoutFragmentToolbarBinding
+import com.yudha.tokoonline.ui.detail.bottomsheet.SinglePickerRecyclerProductBottomSheet
 import com.yudha.tokoonline.util.visible
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,6 +20,7 @@ class DetailActivity : BaseActivity() {
     private lateinit var binding: ActivityDetailBinding
     private lateinit var toolbarBinding: LayoutFragmentToolbarBinding
     private val detailViewModel: DetailViewModel by viewModels()
+    val sheet = SinglePickerRecyclerProductBottomSheet()
 
     companion object {
         fun getIntent(
@@ -44,6 +46,10 @@ class DetailActivity : BaseActivity() {
             imgBack.setOnClickListener {
                 onBackPressedDispatcher.onBackPressed()
             }
+
+        }
+
+        binding.layoutKeranjang.setOnClickListener {
 
         }
 

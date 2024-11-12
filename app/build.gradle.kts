@@ -84,6 +84,8 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.11.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.11.0")
 
+    implementation("com.squareup.picasso:picasso:2.71828")
+
 }
 
 // Allow references to generated code

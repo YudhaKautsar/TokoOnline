@@ -50,6 +50,7 @@
         <attr name="isLoading" format="boolean" />
         <attr name="isClickAble" format="boolean" />
         <attr name="loadIcon" format="reference" />
+        <attr name="icKeranjang" format="boolean" />
         <attr name="ietStyle" format="enum">
             <enum name="primary" value="1" />
             <enum name="secondary" value="2" />

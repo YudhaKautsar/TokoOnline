@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/space_x1_half"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_x2"
+        android:layout_marginBottom="@dimen/space_x2"
+        android:src="@drawable/ic_indicator_bottomsheet"/>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/space_third"
+        android:paddingBottom="@dimen/space_third"
+        android:paddingEnd="@dimen/space_third"
+        android:paddingStart="@dimen/space_third"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/card_photo"
+            android:layout_width="74dp"
+            android:layout_height="74dp"
+            app:srcCompat="@drawable/ic_file"
+            android:layout_marginEnd="@dimen/space"
+            app:cardBackgroundColor="@color/transparent"
+            app:cardElevation="@dimen/zero" />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/request_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/card_photo"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lbl_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textAppearance="@style/TextAppearance.App.TextInputLayout.Roboto.Bold"
+                    android:textColor="@color/saintpatrickblue"
+                    android:textSize="@dimen/text_16"
+                    tools:text="Odi Rautan Pensil Manual Heavy Duty - Biru" />
+
+
+            </RelativeLayout>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line"
+        android:layout_marginTop="@dimen/space_x2"
+        android:layout_marginBottom="@dimen/space_x2"
+        android:layout_marginHorizontal="@dimen/space_x2"
+        android:background="@color/isabeline" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_x2"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAppearance="@style/TextAppearance.App.TextInputLayout.OpenSans.Bold"
+                android:textColor="@color/black_600"
+                android:textSize="@dimen/text_14"
+                android:text="Jumlah"/>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btn_min"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_min"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_jumlah"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAppearance="@style/TextAppearance.App.TextInputLayout.Roboto.Medium"
+                    android:textSize="@dimen/text_16"
+                    android:textColor="@color/jacarta"
+                    android:layout_marginStart="@dimen/space"
+                    android:text="0"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btn_max"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space"
+                    android:src="@drawable/ic_max"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/view_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/space_x2"
+            android:layout_marginHorizontal="@dimen/space_x2"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white">
+
+            <com.yudha.tokoonline.widget.ButtonLoading
+                android:id="@+id/btn_tambah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icKeranjang="true"
+                tools:text="@string/lbl_tambah"
+                app:ietStyle="senary" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</LinearLayout>
