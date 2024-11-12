@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:clipToPadding="false"
+    android:paddingBottom="@dimen/space_x4">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_x2"
+        android:src="@drawable/ic_indicator_bottomsheet"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/space_x2">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/black_500"
+            android:text="@string/lbl_action"
+            android:textSize="@dimen/text_20"
+            android:textAppearance="@style/TextAppearance.App.TextInputLayout.TTCommons.Bold" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/space_x2"
+        android:layout_marginBottom="@dimen/space_x3"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lblCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_500"
+            android:paddingVertical="@dimen/space_x2"
+            android:drawablePadding="@dimen/space"
+            android:text="@string/lbl_category"
+            android:textSize="@dimen/text_18"
+            android:textAppearance="@style/TextAppearance.App.TextInputLayout.TTCommons.Medium" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lblProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_500"
+            android:paddingVertical="@dimen/space_x2"
+            android:drawablePadding="@dimen/space"
+            android:text="@string/lbl_profile"
+            android:textSize="@dimen/text_18"
+            android:textAppearance="@style/TextAppearance.App.TextInputLayout.TTCommons.Medium" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
