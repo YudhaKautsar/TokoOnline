@@ -40,6 +40,11 @@ android {
         viewBinding = true
 
     }
+    kapt {
+        arguments {
+            arg("room.schemaLocation", "$projectDir/schemas")
+        }
+    }
 }
 
 dependencies {
@@ -64,8 +69,8 @@ dependencies {
     kapt("com.google.dagger:hilt-compiler:2.48")
 
     // Kotlin Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")  // Sesuaikan dengan versi terbaru
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
 
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
@@ -75,7 +80,6 @@ dependencies {
 
     implementation("androidx.room:room-runtime:2.5.0")
     kapt("androidx.room:room-compiler:2.5.0")
-    implementation("androidx.room:room-ktx:2.5.0")
 
     implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
     implementation("com.airbnb.android:lottie:${findProperty("lottieVersion") ?: "5.0.3"}")

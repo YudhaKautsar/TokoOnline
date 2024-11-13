@@ -1,8 +1,11 @@
 package com.yudha.tokoonline.module
 
 import android.app.Application
+import android.content.Context
 import androidx.room.Room
 import com.yudha.tokoonline.api.model.localDatabase.AppDatabase
+import com.yudha.tokoonline.api.model.localDatabase.ProductDbQualifier
+import com.yudha.tokoonline.api.model.localDatabase.dao.ProductDao
 import com.yudha.tokoonline.api.model.localDatabase.dao.UserDao
 import dagger.Module
 import dagger.Provides
@@ -26,8 +29,12 @@ object DatabaseModule {
     }
 
     @Provides
-    @Singleton
     fun provideUserDao(appDatabase: AppDatabase): UserDao {
         return appDatabase.userDao()
+    }
+
+    @Provides
+    fun provideProductDao(appDatabase: AppDatabase): ProductDao {
+        return appDatabase.productDao()
     }
 }

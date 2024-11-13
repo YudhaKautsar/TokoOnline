@@ -7,10 +7,13 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import com.yudha.tokoonline.R
+import com.yudha.tokoonline.api.model.localDatabase.dao.ProductDao
+import com.yudha.tokoonline.api.model.localDatabase.table.ProductEntity
 import com.yudha.tokoonline.api.model.response.ProductResponse
 import com.yudha.tokoonline.base.BaseActivity
 import com.yudha.tokoonline.base.Constant
@@ -21,6 +24,10 @@ import com.yudha.tokoonline.ui.main.MainActivity
 import com.yudha.tokoonline.util.RoundedTransformation
 import com.yudha.tokoonline.util.visible
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class DetailActivity : BaseActivity() {
@@ -29,6 +36,10 @@ class DetailActivity : BaseActivity() {
     private lateinit var toolbarBinding: LayoutFragmentToolbarBinding
     private val detailViewModel: DetailViewModel by viewModels()
     val sheet = SinglePickerRecyclerProductBottomSheet()
+
+    @Inject
+    lateinit var productDao: ProductDao
+
 
     companion object {
         fun getIntent(
@@ -98,11 +109,23 @@ class DetailActivity : BaseActivity() {
                             .setTitle("Success Added to Cart")
                             .setCancelable(false)
                             .setPositiveButton("Ok".toUpperCase()) { a, b ->
-                                /*val intent = Intent(this@DetailActivity, IStationaryKeranjangActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                                startActivity(
-                                    intent
-                                )
-                                finish()*/
+                                data?.let { productResponse ->
+                                    val productEntity = ProductEntity(
+                                        id = productResponse.id,
+                                        title = productResponse.title,
+                                        price = productResponse.price,
+                                        image = productResponse.image,
+                                        quantity = jumlahOrder?.toIntOrNull() ?: 0 // Konversi jumlahOrder ke Int atau default 1
+                                    )
+
+                                    lifecycleScope.launch {  // Pastikan operasi database ada dalam coroutine
+                                        try {
+                                            productDao.insertProduct(productEntity)  // Menyisipkan data ke database
+                                        } catch (e: Exception) {
+                                            Log.e("DetailActivity", "Error inserting product: ${e.message}")
+                                        }
+                                    }
+                                }
                             }
                             .create().show()
 
