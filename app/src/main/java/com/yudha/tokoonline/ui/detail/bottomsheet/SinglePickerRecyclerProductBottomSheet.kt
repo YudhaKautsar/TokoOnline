@@ -1,11 +1,15 @@
 package com.yudha.tokoonline.ui.detail.bottomsheet
 
-import android.content.DialogInterface
+import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.Toast
+import androidx.core.view.setMargins
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.squareup.picasso.Callback
@@ -19,11 +23,10 @@ class SinglePickerRecyclerProductBottomSheet : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentRecyclerPickerSheetProductBinding
     var listener: OnSelectedListener? = null
-    lateinit var title: String
+    private lateinit var title: String
     private var data: ProductResponse? = null
 
-    var itemCount = 0
-    var itemAmount = 0
+    private var itemCount = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,27 +39,43 @@ class SinglePickerRecyclerProductBottomSheet : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        addMargin(view)
         data?.let { setData(it) }
     }
+    private fun addMargin(view: View) {
+        (view.parent as View).setBackgroundResource(R.drawable.bg_bottom_bar_rounded)
+        (view.parent.parent as View).apply {
 
-    fun setData(data: ProductResponse){
+            (layoutParams as FrameLayout.LayoutParams).apply {
+                setMargins(16.toPx().toInt())
+            }
+        }
+    }
+
+
+    private fun Number.toPx() = TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP,
+        this.toFloat(),
+        Resources.getSystem().displayMetrics
+    )
+
+    private fun setData(data: ProductResponse){
         this.data = data
-        data.let {
+        data.let { item ->
 
             itemCount = 0
             binding.tvJumlah.text = itemCount.toString()
-            binding.lblTitle.text = it.title
+            binding.lblTitle.text = item.title
 
             if(itemCount == 0){
                 binding.btnMin.setImageResource((R.drawable.ic_min_disabled))
                 binding.btnMax.setImageResource((R.drawable.ic_max))
             }
 
-            if(it.image.isNotEmpty()){
+            if(item.image.isNotEmpty()){
                 val radius = 15
                 Picasso.get()
-                    .load(it.image)
-                    .resize(400,400).centerCrop()
+                    .load(item.image)
                     .transform(RoundedTransformation(radius))
                     .into(binding.cardPhoto, object : Callback {
                         override fun onSuccess() {
@@ -76,34 +95,24 @@ class SinglePickerRecyclerProductBottomSheet : BottomSheetDialogFragment() {
 
 
 
-    //            btn_tambah.setOnClickListener {
-    //                Toast.makeText(requireContext(), "please choose type", Toast.LENGTH_SHORT).show()
-    //            }
-    //
-    //            btn_kirim.setOnClickListener {
-    //                Toast.makeText(requireContext(), "please choose type", Toast.LENGTH_SHORT).show()
-    //            }
-            
-            binding.btnMax.setOnClickListener {
-                if (itemAmount in 1..itemAmount) {
-                    binding.btnMin.setImageResource(R.drawable.ic_min)
-                    itemCount += 1
-                    itemAmount -= 1
-                    binding.tvJumlah.text = itemCount.toString()
-                    if (itemAmount == 0) {
-                        binding.btnMax.setImageResource(R.drawable.ic_max_disabled)
-    //                        btn_max.isEnabled = true
-                    }
+            //            btn_tambah.setOnClickListener {
+            //                Toast.makeText(requireContext(), "please choose type", Toast.LENGTH_SHORT).show()
+            //            }
+            //
+            //            btn_kirim.setOnClickListener {
+            //                Toast.makeText(requireContext(), "please choose type", Toast.LENGTH_SHORT).show()
+            //            }
 
-                }
+            binding.btnMax.setOnClickListener {
+                itemCount += 1
+                binding.tvJumlah.text = itemCount.toString()
+                binding.btnMin.setImageResource(R.drawable.ic_min)
             }
 
             binding.btnMin.setOnClickListener {
                 //                    Log.d(TAG, "bind: $clickCount == $amount")
-                binding.btnMax.setImageResource(R.drawable.ic_max)
                 if (itemCount > 0) {
                     itemCount -= 1
-                    itemAmount += 1
                     binding.tvJumlah.text = itemCount.toString()
                     if (itemCount == 0) {
                         binding.btnMin.setImageResource(R.drawable.ic_min_disabled)
@@ -112,14 +121,18 @@ class SinglePickerRecyclerProductBottomSheet : BottomSheetDialogFragment() {
 
             }
 
+            binding.btnKeranjang.setOnClickListener {
+                if (itemCount == 0){
+                    Toast.makeText(context, context?.getString(R.string.lbl_warning_amount), Toast.LENGTH_SHORT).show()
+                }else {
+                    listener?.onSubmitCart(binding.tvJumlah.text.toString(), item)
+                }
+            }
+
             binding.lblTitle.text = title
         }
     }
 
-    override fun onDismiss(dialog: DialogInterface) {
-        super.onDismiss(dialog)
-        listener?.onDismis(data)
-    }
 
     fun showBottomSheet(
         manager: FragmentManager,
@@ -137,10 +150,6 @@ class SinglePickerRecyclerProductBottomSheet : BottomSheetDialogFragment() {
     }
 
     interface OnSelectedListener {
-        fun onAdd(data: ProductResponse)
-        fun onDismis(data: ProductResponse?)
-
-        fun onSubmitCart(jumlahOrder: String?, unixTipe: String?)
-        fun onSend(jumlahOrder: String?, unixTipe: String?)
+        fun onSubmitCart(jumlahOrder: String?, data: ProductResponse?)
     }
 }
